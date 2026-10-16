@@ -61,3 +61,4 @@ Write-Host ("banner {0}x{1} -> {2}" -f $bannerWidth, $bannerHeight, $bannerPath.
 
 $sourceImage.Dispose()
 Write-Host 'icons generated'
+exit 0

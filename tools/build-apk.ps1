@@ -149,3 +149,7 @@ Write-Host ''
 Write-Host ("APK:    {0}" -f $finalApk) -ForegroundColor Green
 Write-Host ("size:   {0:N0} bytes ({1:N1} MiB)" -f $size, ($size / 1MB)) -ForegroundColor Green
 Write-Host ("sha256: {0}" -f $hash) -ForegroundColor Green
+
+# Native tools (apksigner, aapt2) leave their own exit codes behind; without this the script can
+# report failure to a caller/CI even though the APK was produced and signed.
+exit 0

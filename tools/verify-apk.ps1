@@ -99,3 +99,4 @@ Write-Host ("size:     {0:N0} bytes" -f $size)
 Write-Host ("sha256:   {0}" -f (Get-FileHash $Apk -Algorithm SHA256).Hash)
 Write-Host $(if ($failures -eq 0) { 'ALL CHECKS PASSED' } else { "$failures CHECK(S) FAILED" })
 if ($failures -ne 0) { exit 1 }
+exit 0
