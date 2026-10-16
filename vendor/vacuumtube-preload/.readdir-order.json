@@ -1,0 +1,212 @@
+{
+  "/vt/src/preload/modules": [
+    {
+      "name": "adblock.js",
+      "dir": false
+    },
+    {
+      "name": "block-continue-watching.js",
+      "dir": false
+    },
+    {
+      "name": "block-sign-in-popup.js",
+      "dir": false
+    },
+    {
+      "name": "cast-label.js",
+      "dir": false
+    },
+    {
+      "name": "controller-support.js",
+      "dir": false
+    },
+    {
+      "name": "css.js",
+      "dir": false
+    },
+    {
+      "name": "dearrow.js",
+      "dir": false
+    },
+    {
+      "name": "disable-direct-sign-in.js",
+      "dir": false
+    },
+    {
+      "name": "encryption-notice.js",
+      "dir": false
+    },
+    {
+      "name": "fix-exit.js",
+      "dir": false
+    },
+    {
+      "name": "fix-reloads.js",
+      "dir": false
+    },
+    {
+      "name": "fix-voice.js",
+      "dir": false
+    },
+    {
+      "name": "guide-tabs.js",
+      "dir": false
+    },
+    {
+      "name": "h264ify.js",
+      "dir": false
+    },
+    {
+      "name": "h5vcc",
+      "dir": true
+    },
+    {
+      "name": "hide-shorts.js",
+      "dir": false
+    },
+    {
+      "name": "keybinds.js",
+      "dir": false
+    },
+    {
+      "name": "leanback-settings.js",
+      "dir": false
+    },
+    {
+      "name": "low-memory-mode.js",
+      "dir": false
+    },
+    {
+      "name": "media-capabilities.js",
+      "dir": false
+    },
+    {
+      "name": "mouse.js",
+      "dir": false
+    },
+    {
+      "name": "music-mode",
+      "dir": true
+    },
+    {
+      "name": "no-f11.js",
+      "dir": false
+    },
+    {
+      "name": "pause-on-blur.js",
+      "dir": false
+    },
+    {
+      "name": "remaining-time.js",
+      "dir": false
+    },
+    {
+      "name": "remove-super-resolution.js",
+      "dir": false
+    },
+    {
+      "name": "return-youtube-dislike.js",
+      "dir": false
+    },
+    {
+      "name": "settings",
+      "dir": true
+    },
+    {
+      "name": "speed-control",
+      "dir": true
+    },
+    {
+      "name": "sponsorblock.js",
+      "dir": false
+    },
+    {
+      "name": "support-webp.js",
+      "dir": false
+    },
+    {
+      "name": "touch-support.js",
+      "dir": false
+    },
+    {
+      "name": "ultrawide.js",
+      "dir": false
+    },
+    {
+      "name": "userstyles.js",
+      "dir": false
+    },
+    {
+      "name": "voice-privacy-notice.js",
+      "dir": false
+    },
+    {
+      "name": "volume-control",
+      "dir": true
+    }
+  ],
+  "/vt/src/preload": [
+    {
+      "name": "config.js",
+      "dir": false
+    },
+    {
+      "name": "index.js",
+      "dir": false
+    },
+    {
+      "name": "modules",
+      "dir": true
+    },
+    {
+      "name": "style.css",
+      "dir": false
+    },
+    {
+      "name": "util",
+      "dir": true
+    }
+  ],
+  "/vt/locale": [
+    {
+      "name": "README.md",
+      "dir": false
+    },
+    {
+      "name": "bs.json",
+      "dir": false
+    },
+    {
+      "name": "de.json",
+      "dir": false
+    },
+    {
+      "name": "en.json",
+      "dir": false
+    },
+    {
+      "name": "hr.json",
+      "dir": false
+    },
+    {
+      "name": "id.json",
+      "dir": false
+    },
+    {
+      "name": "nl.json",
+      "dir": false
+    },
+    {
+      "name": "sr-Latn.json",
+      "dir": false
+    },
+    {
+      "name": "sv.json",
+      "dir": false
+    },
+    {
+      "name": "tr.json",
+      "dir": false
+    }
+  ]
+}

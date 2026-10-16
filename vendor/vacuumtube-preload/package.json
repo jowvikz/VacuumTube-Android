@@ -1,0 +1,14 @@
+{
+  "name": "vacuumtube",
+  "version": "2.0.0",
+  "description": "YouTube for TV, on your PC",
+  "main": "src/index.js",
+  "author": "shy (shy@shy.rocks)",
+  "license": "MIT",
+  "desktopName": "rocks.shy.VacuumTube",
+  "dependencies": {
+    "chokidar": "^5.0.0",
+    "electron-updater": "^6.8.10",
+    "string-argv": "^0.3.2"
+  }
+}
