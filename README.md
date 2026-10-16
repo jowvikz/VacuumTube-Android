@@ -247,5 +247,6 @@ adb install -r dist\VacuumTube-Android.apk
 
 The ported page-side code is VacuumTube by **shy1132** (MIT — `vendor/vacuumtube-preload/LICENSE`),
 extracted from the shipped `app.asar`. The Android host, shims and tooling in this directory are a
-derivative work under the same licence. VacuumTube itself is an unofficial wrapper of YouTube
-Leanback; nothing here is affiliated with YouTube or Google.
+derivative work under the same licence; see [`LICENSE`](LICENSE) and [`NOTICE.md`](NOTICE.md).
+VacuumTube itself is an unofficial wrapper of YouTube Leanback; nothing here is affiliated with
+YouTube or Google.

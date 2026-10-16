@@ -106,3 +106,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: dist/VacuumTube-Android.apk
+          # A maintainer may have attached a locally verified APK to the release already; the CI
+          # build is the reproducible one, so replacing it keeps the release consistent with the
+          # run that produced it instead of failing on the name collision.
+          overwrite_files: true
