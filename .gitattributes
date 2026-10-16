@@ -1,0 +1,15 @@
+# Normalise line endings so the repo is usable from Windows and Linux alike.
+* text=auto eol=lf
+
+# The build scripts are Windows/PowerShell first.
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binary assets must never be touched.
+*.png binary
+*.ico binary
+*.jar binary
+*.apk binary
+*.keystore binary
+*.idsig binary

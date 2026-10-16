@@ -1,0 +1,36 @@
+MIT License
+
+Copyright (c) 2025-2026 shy (VacuumTube — https://github.com/shy1132/VacuumTube)
+Copyright (c) 2026 VacuumTube-Android contributors (the Android port in this repository)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Third-party code notice
+
+`vendor/vacuumtube-preload/` contains the page-side modules of VacuumTube 2.0.0,
+extracted from the shipped `resources/app.asar` published by shy1132/VacuumTube
+and reused here under the MIT licence above (the upstream licence text is kept
+verbatim in `vendor/vacuumtube-preload/LICENSE`). `src/` of that directory is
+unmodified; the three DIAL modules replaced by native code are documented in
+`docs/FINDINGS.md`.
+
+This project is an unofficial wrapper of YouTube Leanback and is not affiliated
+with, endorsed by, or sponsored by YouTube or Google.

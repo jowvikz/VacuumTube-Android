@@ -1,0 +1,10 @@
+# build output
+build/
+dist/
+app/src/main/assets/vt/preload.bundle.js
+
+# tooling
+tools/node_modules/
+
+# the Android SDK lives in the sibling reverse-engineering workspace, never here
+android-sdk/

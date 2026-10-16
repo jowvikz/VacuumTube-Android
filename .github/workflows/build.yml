@@ -1,0 +1,108 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  # Fast, no Android SDK needed: bundles the ported preload tree and runs the page-side test suite.
+  page-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install test tooling
+        working-directory: tools
+        run: npm install --no-audit --no-fund
+
+      - name: Bundle the ported preload tree
+        working-directory: tools
+        run: node bundle-preload.mjs
+
+      - name: Smoke test the bundle (jsdom)
+        working-directory: tools
+        run: node smoke-test.mjs
+
+  # The same manual pipeline used locally: aapt2 + javac + d8 + zipalign + apksigner, no Gradle.
+  apk:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Fetch Android SDK build-tools 35.0.0 + platform android-35
+        shell: pwsh
+        run: |
+          $sdk = Join-Path $env:RUNNER_TEMP 'android-sdk'
+          $downloads = Join-Path $sdk '_downloads'
+          New-Item -ItemType Directory -Force -Path $downloads | Out-Null
+
+          # URLs and SHA-1 hashes come from https://dl.google.com/android/repository/repository2-3.xml
+          $items = @(
+            @{ url = 'https://dl.google.com/android/repository/build-tools_r35_windows.zip'
+               sha1 = 'af059bb67cf7786f45ee0db85e2d24985df1b4b6'
+               final = 'build-tools\35.0.0' },
+            @{ url = 'https://dl.google.com/android/repository/platform-35_r02.zip'
+               sha1 = '0bb560a90a7a2cbd0dd8348224d518b638fe7949'
+               final = 'platforms\android-35' }
+          )
+
+          foreach ($item in $items) {
+            $zip = Join-Path $downloads (Split-Path $item.url -Leaf)
+            Write-Host "downloading $($item.url)"
+            Invoke-WebRequest -Uri $item.url -OutFile $zip
+            $hash = (Get-FileHash $zip -Algorithm SHA1).Hash.ToLower()
+            if ($hash -ne $item.sha1) { throw "sha1 mismatch for $zip ($hash)" }
+
+            $extracted = Join-Path $downloads ([IO.Path]::GetFileNameWithoutExtension($zip))
+            Expand-Archive -Path $zip -DestinationPath $extracted -Force
+
+            # Both archives contain one top-level directory (android-15 / android-35) that has to be
+            # flattened into the layout the build script expects.
+            $inner = Get-ChildItem $extracted -Directory | Select-Object -First 1
+            $target = Join-Path $sdk $item.final
+            New-Item -ItemType Directory -Force -Path (Split-Path $target -Parent) | Out-Null
+            Move-Item $inner.FullName $target -Force
+          }
+
+          Get-ChildItem $sdk -Recurse -Depth 1 -Directory | Select-Object FullName
+
+      - name: Build and sign the APK
+        shell: pwsh
+        run: |
+          ./tools/build-apk.ps1 -Sdk "$env:RUNNER_TEMP\android-sdk" -JavaHome "$env:JAVA_HOME"
+
+      - name: Verify the APK
+        shell: pwsh
+        run: |
+          ./tools/verify-apk.ps1 -Sdk "$env:RUNNER_TEMP\android-sdk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: VacuumTube-Android-apk
+          path: dist/VacuumTube-Android.apk
+          if-no-files-found: error
+
+      - name: Attach the APK to a tagged release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/VacuumTube-Android.apk
