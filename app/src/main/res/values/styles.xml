@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Chrome-less dark window; #282828 is the background colour the desktop app used
+         (src/index.js:350). System bars are hidden at runtime for TV-sized surfaces. -->
+    <style name="VTTheme" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/vt_background</item>
+        <item name="android:colorBackground">@color/vt_background</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VacuumTube</string>
+    <string name="loading">Loading YouTube TV…</string>
+    <string name="load_failed">Could not load YouTube Leanback (%1$d %2$s).\nCheck your connection and reopen the app.</string>
+    <string name="back_again_to_exit">Press back again to exit</string>
+    <string name="search_hint">Search YouTube…</string>
+    <string name="keyboard_no_field">No text field on this screen — use the on-screen keyboard</string>
+</resources>
